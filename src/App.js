@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from 'axios';
+import { Input } from 'antd';
+const { Search } = Input;
 
 function App() {
+
+  const onSearch = (value) => {
+    console.log(value)
+    axios.get(`http://localhost:3001/data?url=${value}`).then((res) => { console.log(res) }).catch((err) => {
+      console.log(err)
+    })
+
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Search
+      placeholder="input search text"
+      allowClear
+      enterButton="Search"
+      size="large"
+      onSearch={onSearch}
+    />
   );
+
 }
+
 
 export default App;
