@@ -1,5 +1,6 @@
+import './App.css';
 import axios from 'axios';
-import { Input } from 'antd';
+import { Input, Divider } from 'antd';
 const { Search } = Input;
 
 function App() {
@@ -12,13 +13,18 @@ function App() {
 
   }
   return (
-    <Search
-      placeholder="input search text"
-      allowClear
-      enterButton="Search"
-      size="large"
-      onSearch={onSearch}
-    />
+    <div className='outerFrame'>
+      <header className='headContent'>
+        <h1>oEmbed Test</h1>
+        <Search placeholder="Input URL Scheme text" onSearch={onSearch} enterButton="확인" color='#f1f3f4' />
+      </header >
+      <content>
+      
+      </content>
+      <footer>
+        <Divider />
+      </footer>
+    </div >
   );
 
 }
