@@ -1,14 +1,19 @@
 @import '~antd/dist/antd.css';
 
-.outerFrame{
-    background-color:#f1f3f4;
+
+#root {
     display: flex;
     justify-content: center;
 }
+.outerFrame{
+    /* background-color:#f1f3f4; */
+    width: 70vw;
+}
 
 .headContent {
-    width: 70vw;
-    background-color: #001529;
+    
+    height: 15vh;
+    background-color: #053868;
     padding-bottom: 20px;
 }
 

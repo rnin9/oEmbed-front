@@ -1,34 +1,36 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import { Input, Divider } from 'antd';
+import { Input, Divider, Descriptions, } from 'antd';
 const { Search } = Input;
 
 function App() {
   const [data, setData] = useState({});
-  const [url, setUrl] = useState('')
-  useEffect(() => {
-    onSearch()
-  }, [data])
+  const [isLoading, setIsLoading] = useState(false)
+  const onSearch = (value) => {
+    axios.get(`http://localhost:3001/data?url=${value}`).then((res) => {
+      setData(res.data)
+      setIsLoading(true)
 
-  const onSearch = () => {
-    const response = axios.get(`http://localhost:3001/data?url=${url}`)
-    setData(response.data)
-    console.log(data)
+    }).catch((err) => {
+      console.log(err)
+    })
   }
   return (
     <div className='outerFrame'>
-      <header className='headContent'>
+      <div className='headContent'>
         <h1>oEmbed Test</h1>
-        <input color='#f1f3f4' name="value" type="text" onChange={(e) => { setUrl(e.target.value) }} />
-        <input type="button" onClick={onSearch()} />
-      </header >
+        <Search placeholder="input search text" onSearch={onSearch} enterButton="확인" />
+      </div >
       <div>
-        <ul>
-          {data && Object.entries(data).forEach((keys, val) => {
-            <li key={val}>{keys}: {val}</li>
-          })}
-        </ul>
+        <Descriptions>{
+          Object.entries(data).map(([key, value]) => {
+            return(<Descriptions.Item label={key} span={3}>
+              {value}
+            </Descriptions.Item>)
+          })
+        }
+        </Descriptions>
       </div>
       <footer>
         <Divider />
