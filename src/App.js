@@ -12,12 +12,22 @@ function App() {
   //when Search Button is clicked
   const onSearch = (value) => {
     axios.get(`http://localhost:3001/data?url=${value}`).then((res) => {
-      setData(res.data)
+      const sortedData = sortData(res.data);
+      setData(sortedData)
       setIsLoading(true)
     }).catch((err) => {
       console.log(err)
     })
   }
+// 위에거 발전방향 => 400 오류에따라서 alert오는거 다르게, 화면 바뀌게, 
+  const sortData = (data) => {
+    if (data.hasOwnProperty('title')) {
+      const { title, ...restData } = data
+      return { title: title, ...restData }
+    }
+    return data;
+  }
+
   return (
     <div className='outerFrame'>
       <div className='headContent'>
@@ -27,10 +37,10 @@ function App() {
       </div >
       {/* content field, loop oEmbed Data Object */}
       <div className='content'>
-        { isLoading &&
+        {isLoading &&
           Object.entries(data).map(([key, value]) => {
             return (
-              <ul>
+              <ul key={key}>
                 <li className='liKey'>{key}</li>
                 <li className='liValue'>{value}</li>
               </ul>
