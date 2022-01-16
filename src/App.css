@@ -1,15 +1,18 @@
 @import '~antd/dist/antd.css';
 
-
+/* root css */
 #root {
     display: flex;
     justify-content: center;
 }
+
+/* main Frame */
 .outerFrame{
-    /* background-color:#f1f3f4; */
+    background-color:#f1f3f4;
     width: 70vw;
 }
 
+/* header css*/
 .headContent {
     
     height: 15vh;
@@ -21,3 +24,22 @@
     text-align: center;
     color : white;
 }
+
+/* content css */
+.content > ul {
+    display: flex;
+}
+
+.content > ul > li{
+    list-style: none;
+}
+
+.liKey{
+    width: 20%;
+}
+
+.liValue{
+    width: 80%;
+}
+
+/* footer css */
