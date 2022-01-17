@@ -99,7 +99,7 @@ function App() {
               </ul>
               )
             } else if (key === 'html') {
-              //TODO: iframe src= a tag, instagram(access token), twitter(html)
+              //TODO: iframe src= a tag, instagram(access token), twitter(html) make components
               return (<ul key={key}>
                 <li className='liKey'>{key}</li>
                 <li className='liValue'><a href={value}>{value}</a></li>
