@@ -63,6 +63,7 @@ function App() {
       </div >
       {/* content field, loop oEmbed Data Object */}
       <div className='content'>
+        <Divider />
         {isLoading &&
           Object.entries(data).map(([key, value]) => {
             if (key === 'title') {
@@ -70,22 +71,37 @@ function App() {
                 <ul key={key}>
                   <li className='liKey'>{key}</li>
                   <li className='liValue'><h3>{value}</h3></li>
+                  <Divider />
                 </ul>
               )
             } else if (key === 'thumbnail_url') {
-              // TODO: flex changing
               return (<ul key={key}>
                 <li className='liKey'>{key}</li>
                 <li className='liValue'><a href={value}>{value}</a></li>
-                <li className='liValue'><Image src={value} width={data.thumbnail_width.toString()} height={data.thumbnail_height.toString()} alt="asd">{value}</Image></li>
+                <li className='liKey'></li>
+                <div>
+                  <li className='liValue'><Image src={value} width={data.thumbnail_width} height={data.thumbnail_height} alt="asd">{value}</Image></li>
+                </div>
+                <Divider />
               </ul>
               )
             } else if (key === 'html') {
+              //TODO: iframe src= a tag
               return (<ul key={key}>
                 <li className='liKey'>{key}</li>
+                <li className='liValue'><a href={value}>{value}</a></li>
+                <li className='liKey'></li>
                 <div>
                   {Parser(value)}
                 </div>
+                <Divider />
+              </ul>
+              )
+            }
+            else if (typeof(value) ==='string' && value.match('http')) {
+              return (<ul key={key}>
+                <li className='liKey'>{key}</li>
+                <li className='liValue'><a href={value}>{value}</a></li>
               </ul>
               )
             }
@@ -94,7 +110,9 @@ function App() {
                 <ul key={key}>
                   <li className='liKey'>{key}</li>
                   <li className='liValue'>{value}</li>
+                  <Divider />
                 </ul>
+
               )
             }
           })
