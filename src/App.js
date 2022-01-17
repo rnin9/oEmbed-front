@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Parser from 'html-react-parser';
 import axios from 'axios';
 import { Input, Divider, message, Image } from 'antd';
@@ -9,6 +9,19 @@ function App() {
   //use react hooks
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(() => {
+    const script = document.createElement('script');
+  
+    script.src = "https://www.instagram.com/embed.js";
+    script.async = true;
+  
+    document.body.appendChild(script);
+  
+    return () => {
+      document.body.removeChild(script);
+    }
+  }, []);
 
   /* @brief main Logic when search button isClicked, get oEmbed data from custom backend server.
    * @date 22/01/16
@@ -70,7 +83,7 @@ function App() {
               return (
                 <ul key={key}>
                   <li className='liKey'>{key}</li>
-                  <li className='liValue'><h3>{value}</h3></li>
+                  <li className='liValue'><h3><b>{value}</b></h3></li>
                   <Divider />
                 </ul>
               )
@@ -86,7 +99,7 @@ function App() {
               </ul>
               )
             } else if (key === 'html') {
-              //TODO: iframe src= a tag
+              //TODO: iframe src= a tag, instagram(access token), twitter(html)
               return (<ul key={key}>
                 <li className='liKey'>{key}</li>
                 <li className='liValue'><a href={value}>{value}</a></li>
@@ -102,6 +115,7 @@ function App() {
               return (<ul key={key}>
                 <li className='liKey'>{key}</li>
                 <li className='liValue'><a href={value}>{value}</a></li>
+                <Divider />
               </ul>
               )
             }
