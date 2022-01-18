@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import Parser from 'html-react-parser';
 import axios from 'axios';
 import { Input, Divider, message, Image } from 'antd';
+import TweetHtml from './components/html/tweetHtml';
+import BasicForm from './components/basicForm';
 const { Search } = Input;
 
 function App() {
@@ -11,17 +13,11 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    const script = document.createElement('script');
-  
-    script.src = "https://www.instagram.com/embed.js";
-    script.async = true;
-  
-    document.body.appendChild(script);
-  
-    return () => {
-      document.body.removeChild(script);
+    if (window.twttr) {
+      window.twttr.widgets.load();
+      window.instgrm.Embeds.process();
     }
-  }, []);
+  }, [data]);
 
   /* @brief main Logic when search button isClicked, get oEmbed data from custom backend server.
    * @date 22/01/16
@@ -68,6 +64,7 @@ function App() {
 
   //view code
   return (
+
     <div className='outerFrame'>
       <div className='headContent'>
         <h1>oEmbed Test</h1>
@@ -99,19 +96,24 @@ function App() {
               </ul>
               )
             } else if (key === 'html') {
-              //TODO: iframe src= a tag, instagram(access token), twitter(html) make components
-              return (<ul key={key}>
-                <li className='liKey'>{key}</li>
-                <li className='liValue'><a href={value}>{value}</a></li>
-                <li className='liKey'></li>
-                <div>
-                  {Parser(value)}
-                </div>
-                <Divider />
-              </ul>
-              )
+              //TODO: iframe src= a tag, instagram(access token), twitter(html) make components              
+              if (data.author_url.match('twitter')) {
+                return (<TweetHtml key={key} keyName={key} value={value} />)
+              } else {
+                return (
+                  <ul key={key}>
+                    <li className='liKey'>{key}</li>
+                    <li className='liValue'>{value}</li>
+                    <li className='liKey'></li>
+                    <div>
+                      {Parser(value)}
+                    </div>
+                    <Divider />
+                  </ul>
+                )
+              }
             }
-            else if (typeof(value) ==='string' && value.match('http')) {
+            else if (typeof (value) === 'string' && value.match('http')) {
               return (<ul key={key}>
                 <li className='liKey'>{key}</li>
                 <li className='liValue'><a href={value}>{value}</a></li>
@@ -120,14 +122,7 @@ function App() {
               )
             }
             else {
-              return (
-                <ul key={key}>
-                  <li className='liKey'>{key}</li>
-                  <li className='liValue'>{value}</li>
-                  <Divider />
-                </ul>
-
-              )
+              return(<BasicForm key={key} keyName={key} value={value} />)
             }
           })
         }
