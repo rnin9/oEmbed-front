@@ -5,6 +5,8 @@ import axios from 'axios';
 import { Input, Divider, message, Image } from 'antd';
 import TweetHtml from './components/html/tweetHtml';
 import BasicForm from './components/basicForm';
+import IframeHtml from './components/html/iframeHtml';
+import BasicThumbnail from './components/thumbnail/basicThumbnail';
 const { Search } = Input;
 
 function App() {
@@ -13,10 +15,10 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    if (window.twttr) {
-      window.twttr.widgets.load();
+    if (window.instgrm)
       window.instgrm.Embeds.process();
-    }
+    if (window.twttr)
+      window.twttr.widgets.load();
   }, [data]);
 
   /* @brief main Logic when search button isClicked, get oEmbed data from custom backend server.
@@ -85,33 +87,11 @@ function App() {
                 </ul>
               )
             } else if (key === 'thumbnail_url') {
-              return (<ul key={key}>
-                <li className='liKey'>{key}</li>
-                <li className='liValue'><a href={value}>{value}</a></li>
-                <li className='liKey'></li>
-                <div>
-                  <li className='liValue'><Image src={value} width={data.thumbnail_width} height={data.thumbnail_height} alt="asd">{value}</Image></li>
-                </div>
-                <Divider />
-              </ul>
+              return (
+                <BasicThumbnail key={value} keyName={key} value={value} width={data.thumbnail_width} height={data.thumbnail_height} />
               )
             } else if (key === 'html') {
-              //TODO: iframe src= a tag, instagram(access token), twitter(html) make components              
-              if (data.author_url.match('twitter')) {
-                return (<TweetHtml key={key} keyName={key} value={value} />)
-              } else {
-                return (
-                  <ul key={key}>
-                    <li className='liKey'>{key}</li>
-                    <li className='liValue'>{value}</li>
-                    <li className='liKey'></li>
-                    <div>
-                      {Parser(value)}
-                    </div>
-                    <Divider />
-                  </ul>
-                )
-              }
+              return (<IframeHtml key={value} keyName={key} value={value}></IframeHtml>)
             }
             else if (typeof (value) === 'string' && value.match('http')) {
               return (<ul key={key}>
@@ -122,7 +102,7 @@ function App() {
               )
             }
             else {
-              return(<BasicForm key={key} keyName={key} value={value} />)
+              return (<BasicForm key={key} keyName={key} value={value} />)
             }
           })
         }
