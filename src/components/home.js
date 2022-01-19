@@ -15,7 +15,7 @@ function Home() {
     const [data, setData] = useState({});
     const [isLoading, setIsLoading] = useState(false)
 
-    //useEffect to load <script> in public/index.html
+    //useEffect to load <script> in public/index.html when 'data' is change
     useEffect(() => {
         if (window.instgrm) {
             window.instgrm.Embeds.process();
@@ -37,7 +37,6 @@ function Home() {
             const { data, status } = response
             //when data come from server with 200 statusCode, Sorting Data and show view to client
             if (status === 200) {
-
                 const sortedData = sortData(data)
                 setData(sortedData)
                 setIsLoading(true)
@@ -94,7 +93,7 @@ function Home() {
                         } else if (key === 'thumbnail_url') {
                             if (data.thumbnail_url.match('instagram')) {
                                 return (
-                                    <InstaThumbnail key={value} keyName={key} value={value} width={data.thumbnail_width} height={data.thumbnail_height} />
+                                    <InstaThumbnail key={value} keyName={key} value={value} path={data.instaImagePath} width={data.thumbnail_width} height={data.thumbnail_height} />
 
                                 )
                             } else {

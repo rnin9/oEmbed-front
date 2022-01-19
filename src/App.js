@@ -6,6 +6,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
+      {/* routing '/', '/home' */}
         <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/home" element={<Home/>} />
