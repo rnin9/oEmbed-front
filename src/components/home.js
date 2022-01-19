@@ -15,6 +15,7 @@ function Home() {
     const [data, setData] = useState({});
     const [isLoading, setIsLoading] = useState(false)
 
+    //useEffect to load <script> in public/index.html
     useEffect(() => {
         if (window.instgrm) {
             window.instgrm.Embeds.process();

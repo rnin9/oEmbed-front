@@ -1,6 +1,13 @@
 import React from 'react';
 import { Divider, Image } from 'antd';
 
+/* @brief show thumbnail with preview of image when URL scheme's hostname is instagram
+   @TODO :there is a SOP Policy issue, so we have to find circumvent way. 
+*  @param keyname : name of json
+          value   : value of matched json key
+          width   : value of image width
+          height  : value of image height
+*/
 function instaThumbnail(props) {
   return (
     <ul key={props.keyName}>
