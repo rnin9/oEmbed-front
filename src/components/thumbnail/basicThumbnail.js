@@ -2,7 +2,6 @@ import React from 'react';
 import { Divider, Image } from 'antd';
 
 function basicThumbnail(props){
-    console.log(props.value, typeof props.value ==='string')
     return(
         <ul key={props.keyName}>
                 <li className='liKey'>{props.keyName}</li>

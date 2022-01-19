@@ -1,5 +1,4 @@
 import React from 'react';
-import '../App.css';
 import { Divider } from 'antd';
 
 function basicForm(props) {
