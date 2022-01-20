@@ -6,13 +6,18 @@
 
 해당 프로젝트의 프론트를 실행하기위해서, 해당 순서를 지켜주세요!
 
-### `npm install` (required)
+```bash
+# description 현재 프로젝트의 package.json에 적힌 모든 패키지(packages)를설치하기 위해 terminal에 입력해주세요.
+$ npm install
+```
 
-현재 프로젝트의 package.json에 적힌 모든 패키지(packages)를설치하기 위해 terminal에 입력해주세요.
 
-### `npm start`
 
-브라우저에서 확인하기위해 프로젝트를 run 시켜주세요.
+```bash
+# description 브라우저에서 확인하기위해 프로젝트를 run 시켜주세요.
+$ npm run start
+```
+
 
 * [http://localhost:3000](http://localhost:3000)
 * [http://localhost:3000/home](http://localhost:3000/home) 
