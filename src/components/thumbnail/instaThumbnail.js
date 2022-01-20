@@ -16,7 +16,7 @@ function instaThumbnail(props) {
       <li className='liValue'><a href={props.value}>{props.value}</a></li>
       <li className='liKey'></li>
       <div>
-        <li className='liValue'><Image title={props.keyName} alt='error' src={props.value} width={props.width} height={props.height} fallback={process.env.PUBLIC_URL + 'instaImage/error.jpg'}> {props.value}</Image></li>
+        <li className='liValue'><Image title={props.keyName} alt='error' src={props.value} width={props.width} height={props.height} fallback={process.env.PUBLIC_URL + 'instagramImage/error.jpg'}> {props.value}</Image></li>
         </div>
         <li className='liKey'>Instagram Image path </li>
         <li className='liValue'>{props.path}</li>
