@@ -20,5 +20,17 @@
 위 두개의 url을 브라우저에 입력하시면, front 페이지를 확인하실 수 있습니다.<br/><br/>
 
  __※ Backend Server가 먼저 동작하고 있는지 확인 후, 테스트 url을 입력해주세요!__
+ 
+ 
+ ## Front Page Q&A
+ 
+ >Q1: 화면의 contents들이 뭉개져서 나옵니다!
+ >> 전체화면에서, chrome web Browser %100 일때, 가장 이상적인 방식으로 화면에 표현됩니다. 전체화면으로 결과물을 봐 주세요!
+ <br/>
+ 
+ >Q2: Instagram의 thumbnail_url 이미지가 제대로 출력되지 않는것 같습니다.
+ >>   Instagram oEmbed Api에서 가져온 Data중, thumbnail_url은 cross-origin-resource-policy를 same-origin으로 가지고 있어 <br/>
+ >>   이미지를 미리보기할 때, SOP (same-origin-policy)를 위반한 형태라 표현할 수가 없습니다.<br/><br/>
+ >>   하지만 client가 instagram url scheme을 통해 oEmbed 데이터를 request할 때, 구현된 Nest Backend Server 의 '/public/instagramImage/' directory에서 이미지 파일이 서버에 저장되는것을 확인하실 수 있으며, 백엔드와 프론트를 분리하여 개발했기에 백엔드의 public 폴더에 접근하지 못하는점 양해 부탁드립니다. 
 ____
 <h4 align='right'> written by kang min ju 2022/01/20</h4>
