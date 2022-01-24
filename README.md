@@ -35,6 +35,7 @@ $ npm run start
  
  >Q2: Instagram의 thumbnail_url 이미지가 제대로 출력되지 않는것 같습니다.
  >>   Instagram oEmbed Api에서 가져온 Data중, thumbnail_url은 cross-origin-resource-policy를 same-origin으로 가지고 있어 이미지를 미리보기할 때, SOP (same-origin-policy)를 위반한 형태라 표현할 수가 없습니다.<br/>
- >>   하지만 client가 instagram url scheme을 통해 oEmbed 데이터를 request할 때, 구현된 Nest Backend Server 의 '/public/instagramImage/' directory에서 이미지 파일이 서버에 저장되는것을 확인하실 수 있으며, 백엔드와 프론트를 분리하여 개발했기에 백엔드의 public 폴더에 접근하지 못하는점 양해 부탁드립니다. 
+ >>   ~~하지만 client가 instagram url scheme을 통해 oEmbed 데이터를 request할 때, 구현된 Nest Backend Server 의 '/public/instagramImage/' directory에서 이미지 파일이 서버에 저장되는것을 확인하실 수 있으며, 백엔드와 프론트를 분리하여 개발했기에 백엔드의 public 폴더에 접근하지 못하는점 양해 부탁드립니다.~~
+ >>   열려져 있는 localhost:3001/public/InstagramImage/~-image.png로 접근할 수 있습니다. (2022-01-24 수정) 
 ____
 <h4 align='right'> written by kang min ju 2022/01/20</h4>
