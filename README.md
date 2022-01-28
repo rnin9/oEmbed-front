@@ -1,4 +1,4 @@
-# Purple IO 백엔드 테스트 (Front)
+# 백엔드 테스트 (Front)
 
 해당 백엔드 테스트의 프론트페이지는 React의 CRA로 구성되었습니다. [Create React App](https://github.com/facebook/create-react-app).
 
