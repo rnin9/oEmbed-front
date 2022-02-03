@@ -24,6 +24,22 @@ $ npm run start
 
 위 두개의 url을 브라우저에 입력하시면, front 페이지를 확인하실 수 있습니다.<br/><br/>
 
+## 실행화면
+
+```
+프로그램 실행 시, URL을 입력하는 Input html이 존재하고, 입력한 URL에 대한 oEmbed Data를 수집할 수 있습니다. 
+수집가능한 플랫폼은 Twitter, Instagram, Youtube, Vimeo입니다.
+```
+![image](https://user-images.githubusercontent.com/62874963/152295312-891ae47c-83e9-4329-93b6-28e2b8c41082.png)
+
+## 실행예시 (트위터)
+
+![image](https://user-images.githubusercontent.com/62874963/152295787-efea0225-a12e-4864-8a97-3889880c6d01.png)
+
+
+
+
+
  __※ Backend Server가 먼저 동작하고 있는지 확인 후, 테스트 url을 입력해주세요!__
  
  
